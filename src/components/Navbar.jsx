@@ -24,7 +24,7 @@ const Navbar = () => {
             <div className="px-6 lg:px-12 flex justify-between items-center max-w-350 mx-auto">
                 {/* Logo */}
                 <Link to="/" className="flex items-center justify-center gap-2.5">
-                    <img src="./public/logo/logoicon.svg" alt="Solène logo" className="w-7 h-7" />
+                    <img src="logo/logoicon.svg" alt="Solène logo" className="w-7 h-7" />
                     <span className="font-serif text-xl font-bold text-text-dark tracking-wide">
                         Solène
                     </span>
