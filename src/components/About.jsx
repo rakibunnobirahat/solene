@@ -1,5 +1,3 @@
-import React from 'react';
-
 const features = [
     {
         icon: (
@@ -59,6 +57,8 @@ const About = () => {
                         <img
                             src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=600&auto=format&fit=crop"
                             alt="Spa facial treatment"
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover"
                         />
                     </div>

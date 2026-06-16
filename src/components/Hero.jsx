@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import heroImg from '../assets/images/hero-home-image.png';
+import heroImg from '../assets/images/hero-home-image.jpg';
 
 const Hero = () => {
     return (
@@ -81,6 +80,8 @@ const Hero = () => {
                         <img
                             src={heroImg}
                             alt="Wellness Treatment"
+                            fetchPriority="high"
+                            decoding="async"
                             className="w-full h-full object-cover object-center"
                         />
 

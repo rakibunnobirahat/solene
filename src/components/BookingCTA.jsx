@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 const BookingCTA = () => {
@@ -66,4 +65,3 @@ const BookingCTA = () => {
 };
 
 export default BookingCTA;
-

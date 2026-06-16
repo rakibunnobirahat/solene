@@ -1,16 +1,19 @@
-import React from 'react';
+import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Homepage from "./pages/Homepage"
-import TreatmentsPage from "./pages/TreatmentsPage"
-import BookingPage from "./pages/BookingPage"
+
+const Homepage = lazy(() => import("./pages/Homepage"));
+const TreatmentsPage = lazy(() => import("./pages/TreatmentsPage"));
+const BookingPage = lazy(() => import("./pages/BookingPage"));
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/treatments" element={<TreatmentsPage />} />
-      <Route path="/booking" element={<BookingPage />} />
-    </Routes>
+    <Suspense fallback={<div className="min-h-screen bg-bg-cream" />}>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/treatments" element={<TreatmentsPage />} />
+        <Route path="/booking" element={<BookingPage />} />
+      </Routes>
+    </Suspense>
   )
 }
 

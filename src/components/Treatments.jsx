@@ -1,11 +1,36 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getTreatment } from '../api/allTreatments.js'
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
-const treatmentData = await getTreatment(API_BASE_URL, 'treatments')
-const treatmentsSolid = treatmentData.data
+const fallbackTreatments = [
+    {
+        icon: 'spa',
+        name: 'Signature Facial',
+        description: 'A calming, customized facial designed to refresh skin tone and texture.',
+    },
+    {
+        icon: 'dermatology',
+        name: 'Skin Renewal',
+        description: 'Targeted exfoliation and hydration for a smoother, brighter complexion.',
+    },
+    {
+        icon: 'health_and_beauty',
+        name: 'Injectable Care',
+        description: 'Expert aesthetic treatments that soften lines and restore balanced volume.',
+    },
+    {
+        icon: 'self_care',
+        name: 'Body Sculpting',
+        description: 'Non-invasive contouring options to support your personal wellness goals.',
+    },
+    {
+        icon: 'water_drop',
+        name: 'IV Therapy',
+        description: 'Hydration and vitamin infusions crafted to boost glow, energy, and recovery.',
+    },
+];
 
 const treatmentsImage = [
     {
@@ -28,7 +53,7 @@ const treatmentsImage = [
 
 /* Reusable grid card — hover to reveal description */
 const TreatmentSolidCard = ({ treatment }) => {
-    const [expanded, setExpanded] = React.useState(false);
+    const [expanded, setExpanded] = useState(false);
 
     return (
         <div
@@ -64,12 +89,42 @@ const TreatmentImageCard = ({ treatment }) => (
     <div className={`overflow-hidden rounded-2xl w-100 h-100`}>
         <img
             src={treatment.url}
+            alt=""
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-700"
         />
     </div>
 );
 
 const Treatments = () => {
+    const [treatmentsSolid, setTreatmentsSolid] = useState(fallbackTreatments);
+
+    useEffect(() => {
+        let ignore = false;
+
+        const fetchTreatments = async () => {
+            try {
+                const treatmentData = await getTreatment(API_BASE_URL, 'treatments');
+                const treatments = treatmentData?.data;
+
+                if (!ignore && Array.isArray(treatments) && treatments.length >= 5) {
+                    setTreatmentsSolid(treatments);
+                }
+            } catch (error) {
+                if (import.meta.env.DEV) {
+                    console.warn('Using fallback treatments for homepage cards.', error);
+                }
+            }
+        };
+
+        fetchTreatments();
+
+        return () => {
+            ignore = true;
+        };
+    }, []);
+
     return (
         <section className="py-12 md:py-20 bg-bg-cream" id="treatments">
             <div className="max-w-350 mx-auto px-6 lg:px-12">

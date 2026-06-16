@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const testimonials = [
     {
@@ -58,10 +58,9 @@ const Testimonials = () => {
                         {testimonials.map((t, idx) => {
                             const offset = idx - activeIndex;
                             const isActive = offset === 0;
-                            const isAdjacent = Math.abs(offset) === 1 || Math.abs(offset) === testimonials.length - 1;
 
-                            let style = {};
-                            let className = 'absolute rounded-2xl overflow-hidden shadow-xl transition-all duration-600 ease-out';
+                            let style;
+                            const className = 'absolute rounded-2xl overflow-hidden shadow-xl transition-all duration-600 ease-out';
 
                             if (isActive) {
                                 style = { width: '260px', height: '340px', zIndex: 20, opacity: 1, transform: 'translateX(0) scale(1)' };
@@ -79,7 +78,13 @@ const Testimonials = () => {
 
                             return (
                                 <div key={t.id} className={className} style={style}>
-                                    <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
+                                    <img
+                                        src={t.image}
+                                        alt={t.name}
+                                        loading={isActive ? 'eager' : 'lazy'}
+                                        decoding="async"
+                                        className="w-full h-full object-cover"
+                                    />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"></div>
                                 </div>
                             );

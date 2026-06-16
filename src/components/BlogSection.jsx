@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 const blogPosts = [
@@ -52,6 +51,8 @@ const BlogSection = () => {
                                 <img
                                     src={post.image}
                                     alt={post.title}
+                                    loading="lazy"
+                                    decoding="async"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 <div className="absolute top-3 left-3">

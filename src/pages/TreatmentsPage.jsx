@@ -1,4 +1,3 @@
-import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
@@ -66,6 +65,8 @@ const TreatmentsPage = () => {
                         <img
                             src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2000&auto=format&fit=crop"
                             alt="Spa Treatments"
+                            fetchPriority="high"
+                            decoding="async"
                             className="w-full h-full object-cover object-center opacity-20"
                         />
                         <div className="absolute inset-0 bg-linear-to-b from-bg-cream/80 to-bg-cream z-10"></div>
@@ -92,6 +93,8 @@ const TreatmentsPage = () => {
                                         <img
                                             src={category.image}
                                             alt={category.title}
+                                            loading={index === 0 ? 'eager' : 'lazy'}
+                                            decoding="async"
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
