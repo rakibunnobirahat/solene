@@ -1,4 +1,4 @@
-const getTreatment = async (BASE_URL, endpoint) => {
+const getTreatment = async (BASE_URL, endpoint, options = {}) => {
     try {
         const response = await fetch(`${BASE_URL}/${endpoint}`, {
             method: 'GET',
@@ -13,7 +13,7 @@ const getTreatment = async (BASE_URL, endpoint) => {
 
         return await response.json();
     } catch (error) {
-        if (import.meta.env.DEV) {
+        if (import.meta.env.DEV && !options.silent) {
             console.error('Error getting data:', error);
         }
         throw error;

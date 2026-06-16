@@ -105,7 +105,7 @@ const Treatments = () => {
 
         const fetchTreatments = async () => {
             try {
-                const treatmentData = await getTreatment(API_BASE_URL, 'treatments');
+                const treatmentData = await getTreatment(API_BASE_URL, 'treatments', { silent: true });
                 const treatments = treatmentData?.data;
 
                 if (!ignore && Array.isArray(treatments) && treatments.length >= 5) {
