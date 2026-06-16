@@ -217,7 +217,7 @@ const BookingPage = () => {
             {/* ─── Top bar ─── */}
             <header className="shrink-0 px-6 lg:px-10 py-4 flex items-center justify-between border-b border-gray-200/50 bg-white/60 backdrop-blur-sm">
                 <Link to="/" className="flex items-center gap-2.5 group">
-                    <img src="/src/assets/logo/logoicon.svg" alt="Solène logo" className="w-6 h-6" />
+                    <img src="logo/logoicon.svg" alt="Solène logo" className="w-6 h-6" />
                     <span className="font-serif text-lg font-bold text-text-dark tracking-wide">Solène</span>
                 </Link>
                 <Link
