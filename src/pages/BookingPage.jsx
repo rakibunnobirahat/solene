@@ -348,7 +348,7 @@ const BookingPage = () => {
 
                     {/* Scrollable form body */}
                     <div className="flex-1 overflow-y-auto px-6 lg:px-10 py-6">
-                        <div className="max-w-2xl">
+                        <div className="max-w-6xl">
 
                             {/* STEP 1: Select Treatment + Duration */}
                             {step === 1 && (
@@ -360,7 +360,7 @@ const BookingPage = () => {
                                             <p className="text-sm text-text-muted">Loading treatment menu...</p>
                                         </div>
                                     ) : (
-                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                                             {treatmentsList.map((t, idx) => {
                                                 const isSelected = selectedTreatment?.name === t.name;
                                                 return (
