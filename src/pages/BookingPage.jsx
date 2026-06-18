@@ -190,6 +190,7 @@ const BookingPage = () => {
             try {
                 const n8nPayload = {
                     bookingId: savedBooking._id,
+                    bookingStatus: savedBooking.status,
                     treatment: selectedTreatment.name,
                     date: selectedDate.dateStr,
                     time: selectedTime,
