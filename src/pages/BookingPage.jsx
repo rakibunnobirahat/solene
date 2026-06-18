@@ -156,6 +156,7 @@ const BookingPage = () => {
         // Sending booking data to database
         setSubmitting(true);
         setError(null);
+        let savedBooking = null;
         try {
             const bookingPayload = {
                 treatment: selectedTreatment.name,
@@ -171,6 +172,7 @@ const BookingPage = () => {
 
             const response = await createBooking(`${API_BASE_URL}/bookings`, bookingPayload);
             if (response && response.success) {
+                savedBooking = response.data;
                 setBookingSuccess(response.data);
                 setStep(5);
             } else {
@@ -184,23 +186,26 @@ const BookingPage = () => {
         }
 
         // Sending booking data to n8n (fire-and-forget — never show errors to user)
-        try {
-            const bookingPayload = {
-                treatment: selectedTreatment.name,
-                date: selectedDate.dateStr,
-                time: selectedTime,
-                duration: selectedDuration,
-                firstName: formData.firstname,
-                lastname: formData.lastname,
-                email: formData.email,
-                phone: formData.phone,
-                notes: formData.notes
-            };
+        if (savedBooking) {
+            try {
+                const n8nPayload = {
+                    bookingId: savedBooking._id,
+                    treatment: selectedTreatment.name,
+                    date: selectedDate.dateStr,
+                    time: selectedTime,
+                    duration: selectedDuration,
+                    firstName: formData.firstname,
+                    lastname: formData.lastname,
+                    email: formData.email,
+                    phone: formData.phone,
+                    notes: formData.notes
+                };
 
-            await createBooking(API_N8N_URL, bookingPayload);
-        } catch (err) {
-            // Silently log — n8n is a secondary integration, don't affect UX
-            console.warn("n8n webhook failed (non-critical):", err);
+                await createBooking(API_N8N_URL, n8nPayload);
+            } catch (err) {
+                // Silently log — n8n is a secondary integration, don't affect UX
+                console.warn("n8n webhook failed (non-critical):", err);
+            }
         }
     };
 
