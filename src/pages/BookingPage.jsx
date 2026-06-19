@@ -167,7 +167,8 @@ const BookingPage = () => {
                 lastName: formData.lastname,
                 email: formData.email,
                 phone: formData.phone,
-                notes: formData.notes
+                notes: formData.notes,
+                price: calcPrice(selectedTreatment.price, selectedDuration)
             };
 
             const response = await createBooking(`${API_BASE_URL}/bookings`, bookingPayload);
@@ -199,7 +200,8 @@ const BookingPage = () => {
                     lastname: formData.lastname,
                     email: formData.email,
                     phone: formData.phone,
-                    notes: formData.notes
+                    notes: formData.notes,
+                    price: savedBooking.price
                 };
 
                 await createBooking(API_N8N_URL, n8nPayload);
