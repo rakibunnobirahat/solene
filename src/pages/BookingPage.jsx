@@ -320,7 +320,7 @@ const BookingPage = () => {
                 </aside>
 
                 {/* ─── Right panel: Form steps ─── */}
-                <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+                <div className="flex-1 flex flex-col min-w-0 w-[1vh] overflow-hidden">
 
                     {/* Mobile header (visible only on small screens) */}
                     <div className="lg:hidden shrink-0 px-6 pt-5 pb-3">
