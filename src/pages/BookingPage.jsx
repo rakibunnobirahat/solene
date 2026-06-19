@@ -368,7 +368,7 @@ const BookingPage = () => {
                                             <p className="text-sm text-text-muted">Loading treatment menu...</p>
                                         </div>
                                     ) : (
-                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                             {treatmentsList.map((t, idx) => {
                                                 const isSelected = selectedTreatment?.name === t.name;
                                                 return (
