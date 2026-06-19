@@ -220,7 +220,7 @@ const BookingPage = () => {
     };
 
     return (
-        <div className="h-screen w-screen flex flex-col bg-bg-cream overflow-hidden">
+        <div className="h-dvh w-screen flex flex-col bg-bg-cream overflow-hidden">
 
             {/* ─── Top bar ─── */}
             <header className="shrink-0 px-6 lg:px-10 py-4 flex items-center justify-between border-b border-gray-200/50 bg-white/60 backdrop-blur-sm">
@@ -320,7 +320,7 @@ const BookingPage = () => {
                 </aside>
 
                 {/* ─── Right panel: Form steps ─── */}
-                <div className="flex-1 flex flex-col min-w-0 h-[0.8vh] overflow-hidden">
+                <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
 
                     {/* Mobile header (visible only on small screens) */}
                     <div className="lg:hidden shrink-0 px-6 pt-5 pb-3">
