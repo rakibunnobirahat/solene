@@ -742,7 +742,10 @@ const BookingPage = () => {
                     </div>
 
                     {/* ─── Footer Controls — always pinned at bottom ─── */}
-                    <div className="shrink-0 px-6 lg:px-10 py-4 border-t border-gray-200/50 bg-white/60 backdrop-blur-sm flex justify-between items-center">
+                    <div 
+                        style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
+                        className="shrink-0 px-6 lg:px-10 pt-4 border-t border-gray-200/50 bg-white/60 backdrop-blur-sm flex justify-between items-center"
+                    >
                         {step === 5 ? (
                             <button
                                 onClick={() => navigate('/')}
